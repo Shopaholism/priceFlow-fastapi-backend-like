@@ -1,1 +1,1 @@
-# shopaholism-fastapi-backend-like
+# priceFlow-fastapi-backend-like
