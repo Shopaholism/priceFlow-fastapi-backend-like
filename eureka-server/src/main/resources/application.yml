@@ -1,0 +1,23 @@
+server:
+  port: 8761  # Default : 8761
+
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: admin
+      password: admin
+
+eureka:
+  server:
+    response-cache-update-interval-ms: 1000 # Eureka Server's Response Cache. Default 30,000ms
+    enableSelfPreservation: false           # Just for demo
+  client:
+    register-with-eureka: false             # Only for local stand-alone development
+    fetch-registry: false                   # Only for local stand-alone development
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  # Default Value. Just for demo
+  instance:
+    hostname: localhost
+    prefer-ip-address: true                 # Use ip address instead of hostname from OS when reporting myself to eureka server
