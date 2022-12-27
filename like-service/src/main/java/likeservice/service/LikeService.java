@@ -9,15 +9,8 @@ import java.sql.Array;
 import java.util.ArrayList;
 
 @Service
-@RequiredArgsConstructor
 public class LikeService {
     private final LikeRepository likeRepository;
-
-    public static List<User> users;
-    static {
-        users = new ArrayList<>();
-        users.add(new User("12345", "sally", new ArrayList("11111")))
-    }
 
     public List<Item> getUserLike(String userId){
         return likeRepository.getAllLikeItems(userId);

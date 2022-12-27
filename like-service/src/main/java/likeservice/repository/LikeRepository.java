@@ -1,19 +1,15 @@
 package likeservice.repository;
 
+import likeservice.model.Like;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
 
 @Repository
-public class LikeRepository {
-    Map<Integer, User> memoryDB = new ConcurrentHashMap<>();
-
-    public Collection<Like> findAllLikeList(userId){
-        return this.memoryDB.get(userId)
-    }
-
-    public void deleteLikeItem(String userId, String itemId) {
-
-    }
+public interface LikeRepository extends JpaRepository<Like, Long> {
+    @Query("select l from Like l where l.userId = ?1 and l.itemId = ?1")
+    Optional<Like> findByUser_email(String user_email);
 
 }
