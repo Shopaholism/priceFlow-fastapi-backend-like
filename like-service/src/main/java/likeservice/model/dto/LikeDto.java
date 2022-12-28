@@ -1,22 +1,17 @@
 package likeservice.model.dto;
 
 import likeservice.model.Like;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
-@Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class LikeDTO {
+@ToString
+public class LikeDto {
     private String user_id;
     private String item_id;
 
-    public LikeDTO(Like like){
+    public LikeDto(Like like){
         this.user_id = like.getUserId();
         this.item_id = like.getItemId();
     }
-
 }
