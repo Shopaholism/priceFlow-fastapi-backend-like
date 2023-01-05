@@ -4,7 +4,14 @@ import uvicorn
 from fastapi import FastAPI
 from routers.like import like_router
 from app.database import conn
+import py_eureka_client.eureka_client as eureka_client
 
+like_service_port = 8081
+eureka_host = "admin:admin@127.0.0.1:8761"
+eureka_client.init(eureka_server=f"http://{eureka_host}/eureka/",
+                   app_name="like-service",
+                   instance_host="127.0.0.1",
+                   instance_port=like_service_port)
 app = FastAPI(
     title='PriceFlow Like Service',
     description='PriceFlow Like Service API',
