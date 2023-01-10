@@ -8,6 +8,8 @@ import priceflow.service.DtoService;
 import priceflow.service.KakaoService;
 import priceflow.service.OAuthService;
 
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.Optional;
 
 
@@ -32,6 +34,13 @@ public class UserController {
         String access_token = oAuthService.getKakaoAccessToken(code);
         kakaoService.getInfoByKakaoToken(access_token);
     }
+
+    @PostMapping("/user/test/{token}")
+    public void usertest(@PathVariable String token){
+        System.out.println(token);
+        kakaoService.getInfoByKakaoToken(token);
+    }
+
 
     @ResponseBody
     @GetMapping("/user/{userId}")
